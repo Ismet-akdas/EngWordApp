@@ -1,17 +1,3 @@
 # EnglishWordApp
 
-İngilizce kelime öğrenme ve yönetim uygulaması.
-
-## Kurulum
-
-1. Bağımlılıkları yükleyin:
-```bash
-npm install
-```
-
-2. `.env` dosyasını oluşturun ve veritabanı bilgilerinizi girin.
-
-3. Uygulamayı başlatın:
-```bash
-npm start
-```
+Bu uygulama, İngilizce kelimeleri listelemek, yeni kelimeler eklemek, mevcut kelimeleri düzenlemek ve silmek için geliştirilmiştir. Ayrıca içinde bir quiz sistemi barındırarak öğrenilen kelimelerin pekiştirilmesine yardımcı olur.
