@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
+                <div class="animate-fade-in">
+                    <h1 class="display-5 fw-bold mb-1">Kelime Listesi</h1>
+                    <p class="text-secondary mb-0">Toplam <span class="text-primary fw-bold"><%= word.length %></span> kelime kelime bilginizi bekliyor.</p>
+                </div>
+                <a href="/add" class="btn btn-primary rounded-4 py-3 px-4 shadow-lg animate-fade-in">
+                    <i class="fa-solid fa-plus me-2"></i> Yeni Kelime Ekle
+                </a>
+            </div>
+
+            <div class="word-grid">
+                <% word.forEach((a, index) => { %>
+                    <div class="word-card animate-fade-in" style="animation-delay: <%= index * 0.05 %>s">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-primary bg-opacity-10 text-primary border-0 rounded-pill px-3 py-2">
+                                    #<%= index + 1 %>
+                                </span>
+                            </div>
+                            <h3 class="card-en"><%= a.english %></h3>
+                            <p class="card-tr"><%= a.turkish %></p>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <a href="/edit/<%= a.Word_ID %>" class="action-btn edit-btn">
+                                <i class="fa-solid fa-pen me-1"></i> Düzenle
+                            </a>
+                            <form method="POST" action="/delete/<%= a.Word_ID %>" class="flex-grow-1">
+                                <button type="submit" class="action-btn delete-btn-mini w-100" 
+                                        onclick="return confirm('Bu kelimeyi silmek istediğinize emin misiniz?')">
+                                    <i class="fa-solid fa-trash-can me-1"></i> Sil
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            
+            <% if (word.length === 0) { %>
+                <div class="text-center py-5 glass-card rounded-5 mt-5">
+                    <i class="fa-solid fa-box-open display-1 text-secondary opacity-25 mb-4"></i>
+                    <h2 class="text-secondary">Henüz kelime eklenmemiş.</h2>
+                    <a href="/add" class="btn btn-primary mt-3">İlk Kelimeni Ekle</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+
+<%- include('partials/footer') %>

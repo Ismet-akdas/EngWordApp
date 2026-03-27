@@ -1,0 +1,66 @@
+
+<%- include('partials/header') %>
+
+
+
+
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card animate-fade-in p-4 p-md-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold mb-2">Yeni Kelime Ekle</h1>
+                    <p class="text-secondary">Sözlüğünüze yeni kelimeler ekleyerek gelişiminizi sürdürün.</p>
+                </div>
+
+                <% if (error) { %>
+                    <div class="alert alert-danger rounded-4 border-0 bg-opacity-10 mb-4 animate-fade-in">
+                        <i class="fa-solid fa-circle-xmark me-2"></i> <%= error %>
+                    </div>
+                <% } %>
+                <% if (success) { %>
+                    <div class="alert alert-success rounded-4 border-0 bg-opacity-10 mb-4 animate-fade-in">
+                        <i class="fa-solid fa-circle-check me-2"></i> Kelime başarıyla eklendi!
+                    </div>
+                <% } %>
+
+                <form action="/add" method="POST">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label text-secondary mb-2">İngilizce</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0 text-primary">
+                                    <i class="fa-solid fa-font"></i>
+                                </span>
+                                <input type="text" name="english" class="form-control border-start-0 ps-0" 
+                                       placeholder="Word in English" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label text-secondary mb-2">Türkçe</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0 text-primary">
+                                    <i class="fa-solid fa-language"></i>
+                                </span>
+                                <input type="text" name="turkish" class="form-control border-start-0 ps-0" 
+                                       placeholder="Türkçe karşılığı" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-5">
+                            <button type="submit" class="btn btn-primary w-100 py-3 rounded-4 shadow-lg">
+                                <i class="fa-solid fa-plus-circle me-2"></i> Sözlüğe Ekle
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+  
+<%- include('partials/footer') %>

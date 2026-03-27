@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+
+
+
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card animate-fade-in p-4 p-md-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold mb-2">Quiz Time!</h1>
+                    <p class="text-secondary">Kelime bilginizi test edin ve kendinizi geliştirin.</p>
+                </div>
+
+                <form action="/" method="POST">
+                    <div class="quiz-container">
+                        <div class="mb-4">
+                            <label class="form-label text-secondary mb-3">İngilizce Kelime</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-transparent border-end-0 text-primary">
+                                    <i class="fa-solid fa-language"></i>
+                                </span>
+                                <input type="text" class="form-control border-start-0 ps-0" name="question" 
+                                       value="<%= word?.english || 'Sıradaki kelime için butona basın...' %>" readonly>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="wordId" value="<%= word?.Word_ID || '' %>">
+
+                        <div class="mb-5">
+                            <label class="form-label text-secondary mb-3">Türkçe Karşılığı</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-transparent border-end-0 text-primary">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                </span>
+                                <input type="text" autocomplete="off" name="answer" 
+                                       class="form-control border-start-0 ps-0" placeholder="Cevabı buraya yazın...">
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                            <button type="submit" name="start" value="true" class="btn btn-secondary w-100 py-3 rounded-4 bg-opacity-10 border-0">
+                                <i class="fa-solid fa-rotate me-2"></i> Yeni Kelime
+                            </button>
+                            <button type="submit" name="check" value="true" class="btn btn-primary w-100 py-3 rounded-4 shadow-lg">
+                                <i class="fa-solid fa-check-circle me-2"></i> Kontrol Et
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <% if (err) { %>
+                    <div class="alert alert-danger mt-4 rounded-4 border-0 bg-opacity-10 animate-fade-in">
+                        <i class="fa-solid fa-circle-xmark me-2"></i> <%= err %>
+                    </div>
+                <% } %>
+                <% if (success) { %>
+                    <div class="alert alert-success mt-4 rounded-4 border-0 bg-opacity-10 animate-fade-in">
+                        <i class="fa-solid fa-circle-check me-2"></i> <%= success %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer') %>
